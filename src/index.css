@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: "Nunito", sans-serif;
+    @apply bg-neutral-900 text-neutral-300;
+}
+
+/* custom scroll bar */
+::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #ff8f07e6;
+    background-image: linear-gradient(red, orange);
+    border-radius: 2px;
+}
