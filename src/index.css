@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: "Nunito", sans-serif;
     @apply bg-neutral-900 text-neutral-300;
@@ -18,4 +22,9 @@ body {
     background-color: #ff8f07e6;
     background-image: linear-gradient(red, orange);
     border-radius: 2px;
+}
+
+/* prevent scroll bar */
+.scrollbar-none::-webkit-scrollbar {
+    display: none;
 }

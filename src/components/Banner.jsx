@@ -16,7 +16,7 @@ function Banner() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage(curr => curr < bannerData.length - 1 ? curr + 1 : 0);
-    }, 3000);
+    }, 5000);
     return () => clearInterval(interval);
   }, [bannerData]);
   return (
@@ -36,14 +36,12 @@ function Banner() {
               <div className='absolute top-0 w-full h-full hidden md:flex items-center justify-between'>
                 {/* prev btn */}
                 <button onClick={handlePrev}
-                  className='z-10 bg-white opacity-35 hover:opacity-100 p-1 rounded-full text-black ml-4
-                  hover:bg-gradient-to-l from-red-500 to-orange-500 transition-all duration-300'>
+                  className='z-10 bg-white opacity-35 hover:opacity-75 p-1 rounded-full text-black ml-4 transition-all duration-300'>
                   <FaAngleLeft className='text-xl sm:text-2xl' />
                 </button>
                 {/* next btn */}
                 <button onClick={handleNext}
-                  className='z-10 bg-white opacity-35 hover:opacity-100 p-1 rounded-full text-black mr-4
-                  hover:bg-gradient-to-l from-red-500 to-orange-500 transition-all duration-300'>
+                  className='z-10 bg-white opacity-35 hover:opacity-75 p-1 rounded-full text-black mr-4 transition-all duration-300'>
                   <FaAngleRight className='text-xl sm:text-2xl' />
                 </button>
               </div>

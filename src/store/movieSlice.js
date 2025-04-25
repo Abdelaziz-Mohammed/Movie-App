@@ -5,6 +5,10 @@ const movieSlice = createSlice({
     initialState: {
         bannerData: [],
         imageURL: '',
+        nowPlayingData: [],
+        topRatedData: [],
+        popularData: [],
+        onTheAirData: [],
     },
     reducers: {
         setBannerData(state, action) {
@@ -12,10 +16,22 @@ const movieSlice = createSlice({
         },
         setImageURL(state, action) {
             state.imageURL = action.payload;
+        },
+        setNowPlayingData(state, action) {
+            state.nowPlayingData = action.payload;
+        },
+        setTopRatedData(state, action) {
+            state.topRatedData = action.payload;
+        },
+        setPopularData(state, action) {
+            state.popularData = action.payload;
+        },
+        setOnTheAirData(state, action) {
+            state.onTheAirData = action.payload;
         }
     },
 });
 
-export const { setBannerData, setImageURL } = movieSlice.actions;
+export const { setBannerData, setImageURL, setNowPlayingData, setTopRatedData, setPopularData, setOnTheAirData } = movieSlice.actions;
 
 export default movieSlice.reducer;

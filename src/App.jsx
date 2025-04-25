@@ -4,7 +4,7 @@ import Footer from './components/footer/Footer';
 import MobileNavigation from "./components/header/MobileNavigation";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { fetchTrendingData, fetchConfiguration } from "./store/movieActions";
+import { fetchTrendingData, fetchConfiguration, fetchNowPlayingData, fetchTopRatedData, fetchPopularData, fetchOnTheAirData } from "./store/movieActions";
 
 function App() {
   const dispatch = useDispatch();
@@ -12,10 +12,14 @@ function App() {
   useEffect(() => {
     dispatch(fetchTrendingData());
     dispatch(fetchConfiguration());
+    dispatch(fetchNowPlayingData());
+    dispatch(fetchTopRatedData());
+    dispatch(fetchPopularData());
+    dispatch(fetchOnTheAirData());
   }, [dispatch]);
 
   return (
-    <main className="pb-14 lg:pd-0">
+    <main className="pb-14 md:pb-0">
       <Header />
       <div>
         <Outlet />

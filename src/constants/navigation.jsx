@@ -13,7 +13,7 @@ export const headerNavItems = [
   {
     id: 2,
     label: 'Movies',
-    link: '/movies'
+    link: '/movie'
   },
 ];
 
@@ -34,7 +34,7 @@ export const mobileNavItems = [
   {
     id: 3,
     label: 'Movies',
-    link: '/movies',
+    link: '/movie',
     icon: <BiSolidMoviePlay />,
   },
   {
