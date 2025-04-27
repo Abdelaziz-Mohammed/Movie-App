@@ -12,10 +12,10 @@ function Home() {
     <div>
       <Banner />
       <HorizontalSlider headingTitle='Trending' sliderData={trendingData} isTrending={true} />
-      <HorizontalSlider headingTitle='Now Playing' sliderData={nowPlayingData} />
-      <HorizontalSlider headingTitle='Top Rated Movies' sliderData={topRatedData} />
-      <HorizontalSlider headingTitle='Popular TV Shows' sliderData={popularData} />
-      <HorizontalSlider headingTitle='On The Air' sliderData={onTheAirData} />
+      <HorizontalSlider headingTitle='Now Playing' sliderData={nowPlayingData} media_type='movie' />
+      <HorizontalSlider headingTitle='Top Rated Movies' sliderData={topRatedData} media_type='movie' />
+      <HorizontalSlider headingTitle='Popular TV Shows' sliderData={popularData} media_type='tv' />
+      <HorizontalSlider headingTitle='On The Air' sliderData={onTheAirData} media_type='tv' />
     </div>
   )
 }

@@ -2,7 +2,7 @@ import Card from './Card';
 import { useRef } from "react";
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6';
 
-function HorizontalSlider({ headingTitle, sliderData, isTrending = false }) {
+function HorizontalSlider({ headingTitle, sliderData, media_type, isTrending = false }) {
   const containerRef = useRef(null);
   const handlePrev = () => {
     containerRef.current.scrollLeft -= 254;
@@ -10,17 +10,6 @@ function HorizontalSlider({ headingTitle, sliderData, isTrending = false }) {
   const handleNext = () => {
     containerRef.current.scrollLeft += 254;
   }
-  // auto sliding
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     if (containerRef.current.scrollLeft >= ((17*230)+(17*24))) {
-  //       containerRef.current.scrollLeft = 0;
-  //       return;
-  //     }
-  //     containerRef.current.scrollLeft += 254;
-  //   }, 5000);
-  //   return () => clearInterval(interval);
-  // }, []);
   return (
     <section className="container mx-auto px-4 my-10">
       <h2 className="text-xl sm:text-2xl md:text-3xl text-white font-bold mb-4">
@@ -32,7 +21,7 @@ function HorizontalSlider({ headingTitle, sliderData, isTrending = false }) {
           scrollbar-none relative z-10 scroll-smooth transition-all">
           {
             sliderData.map((data, index) =>
-              <Card key={data.id} data={data} isTrending={isTrending} index={index+1} />
+              <Card key={data.id} data={data} media_type={media_type} isTrending={isTrending} index={index+1} />
             )
           }
         </div>

@@ -1,22 +1,25 @@
 import { useEffect, useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { logoImg, userImg } from '../../assets/index';
 import { IoSearchOutline } from "react-icons/io5";
 import { headerNavItems } from './../../constants/navigation';
 
 function Header() {
-  const [searchInput, setSearchInput] = useState('');
+  const location = useLocation();
+  const searchVal = location?.search?.slice(3)?.split('%20')?.join(' ');
+  const [searchInput, setSearchInput] = useState(searchVal);
   const navigate = useNavigate();
+
   useEffect(() => {
     if (searchInput) navigate(`/search?q=${searchInput}`);
   }, [searchInput, navigate]);
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-    // navigate(`/search?q=${searchInput}`);
-    // setSearchInput('');
   };
+  
   return (
-    <header className='fixed top-0 w-full h-16 bg-black bg-opacity-75 z-50'>
+    <header className='fixed top-0 w-full h-16 bg-black bg-opacity-75 z-50 border-b border-neutral-700'>
       <div className='container mx-auto px-3
         flex items-center h-full'>
         {/* logo */}
@@ -44,7 +47,7 @@ function Header() {
             <input type="text" placeholder='Search here...'
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
-              className='hidden md:block bg-neutral-700 px-4 py-1 outline-none
+              className='hidden md:block bg-white/25 px-4 py-1 outline-none
               rounded-md border border-neutral-600 placeholder:text-sm' />
             <button className='w-8 h-8 flex items-center justify-center'>
               <IoSearchOutline className='text-2xl text-white' />
