@@ -6,10 +6,11 @@ function Card({data, media_type, isTrending, index, hoverEffect = false}) {
   const imageURL = useSelector(state => state.movie.imageURL);
   const mediaType = data.media_type || media_type;
   return (
-    <Link to={'/'+mediaType+'/'+data.id} className={`w-full min-w-[230px] max-w-[230px] block h-80 !overflow-hidden rounded relative
+    <Link to={'/'+mediaType+'/'+data.id}
+      className={`w-full min-w-[230px] max-w-[230px] block h-80 !overflow-hidden rounded relative
       border-[2px] border-neutral-800
       ${hoverEffect && 'hover:scale-105 hover:-rotate-2 transition-all duration-300'}
-      `}>
+    `}>
       {
         data.poster_path ?
         <img src={imageURL+data.poster_path} alt={data.title || data.name} loading="eager" /> :

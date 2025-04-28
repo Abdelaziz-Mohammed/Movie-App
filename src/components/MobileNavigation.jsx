@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { mobileNavItems } from './../../constants/navigation';
+import { mobileNavItems } from './../constants/navigation';
 import { NavLink } from 'react-router-dom';
 
 function MobileNavigation() {

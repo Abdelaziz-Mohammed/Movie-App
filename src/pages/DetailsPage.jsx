@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import { useSelector } from "react-redux";
 import moment from "moment";
+import HorizontalSlider from './../components/HorizontalSlider';
 
 function DetailsPage() {
   const params = useParams();
@@ -9,11 +10,9 @@ function DetailsPage() {
   const {data} = useFetch(`/${params?.explore}/${params?.id}`);
   const {data: castData} = useFetch(`/${params?.explore}/${params?.id}/credits`);
   const {data: similar} = useFetch(`/${params?.explore}/${params?.id}/similar`);
-
-  // console.log(data);
-  console.log(castData);
-  console.log(castData.cast);
-  console.log(similar.results);
+  const similarData = similar?.results || [];
+  const {data: recommended} = useFetch(`/${params?.explore}/${params?.id}/recommendations`);
+  const recommendedData = recommended?.results || [];
 
   return (
     <section className="">
@@ -27,8 +26,8 @@ function DetailsPage() {
         <div className='absolute top-0 left-0 w-full h-full bg-gradient-to-t from-neutral-900 to-transparent'>
         </div>
       </div>
-      {/* poster image */}
-      <div className="container mx-auto px-4 pt-52 pb-16 md:pt-0 md:pb-16
+      {/* poster image + desc */}
+      <div className="container mx-auto px-4 pt-52
         flex flex-col md:flex-row justify-start gap-6 md:gap-10
         ">
         <div className="-mt-28 relative w-fit mx-auto md:mx-0">
@@ -80,11 +79,11 @@ function DetailsPage() {
             </p>
           </div>
           {/* cast */}
-          <div>
+          <div className="border-b border-neutral-700 pb-5">
             <h2 className="text-xl text-white font-bold mb-5">
               Cast :
             </h2>
-            <div className="flex flex-wrap gap-y-8 gap-x-6">
+            <div className="flex flex-wrap justify-between gap-y-8 gap-x-6">
               {
                 castData?.cast?.map((cast, index) =>
                   <div key={index}
@@ -100,7 +99,7 @@ function DetailsPage() {
                         <span className="text-xs text-white/90">No Photo</span>
                       </div>
                     }
-                    <span className="text-neutral-400 text-xs text-center">
+                    <span className="text-neutral-400 text-xs text-center text-ellipsis line-clamp-2">
                       {cast.name || cast.original_name}
                     </span>
                   </div>
@@ -108,12 +107,36 @@ function DetailsPage() {
               }
             </div>
           </div>
-          {/* similar */}
-          <div>
-            similar movies/tv
-          </div>
         </div>
       </div>
+      {/* similar */}
+      {
+        (similarData.length > 0) ?
+        <HorizontalSlider onclick={window.scrollTo({ top: 0, behavior: 'smooth' })}
+          headingTitle={`Similar ${params?.explore === 'tv' ? 'TV Shows' : 'Movies'} :`}
+          sliderData={similarData}
+          media_type={params?.explore}
+        /> :
+        <div className="container mx-auto my-5">
+          <h2 className="text-xl sm:text-2xl md:text-3xl text-white font-bold mb-4">
+            No Similar {params?.explore === 'tv' ? 'TV Shows' : 'Movies'} Found!
+          </h2>
+        </div>
+      }
+      {/* recommended */}
+      {
+        (similarData.length > 0) ?
+        <HorizontalSlider onclick={window.scrollTo({ top: 0, behavior: 'smooth' })}
+          headingTitle={`Recommended ${params?.explore === 'tv' ? 'TV Shows' : 'Movies'} :`}
+          sliderData={recommendedData}
+          media_type={params?.explore}
+        /> :
+        <div className="container mx-auto my-5">
+          <h2 className="text-xl sm:text-2xl md:text-3xl text-white font-bold mb-4">
+            No Recommended {params?.explore === 'tv' ? 'TV Shows' : 'Movies'} Found!
+          </h2>
+        </div>
+      }
     </section>
   )
 }

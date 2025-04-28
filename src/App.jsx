@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
-import Header from './components/header/Header';
-import Footer from './components/footer/Footer';
-import MobileNavigation from "./components/header/MobileNavigation";
+import Header from './components/Header';
+import Footer from './components/Footer';
+import MobileNavigation from "./components/MobileNavigation";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchTrendingData, fetchConfiguration, fetchNowPlayingData, fetchTopRatedData, fetchPopularData, fetchOnTheAirData } from "./store/movieActions";

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { logoImg, userImg } from '../../assets/index';
+import { logoImg, userImg } from './../assets/index';
 import { IoSearchOutline } from "react-icons/io5";
-import { headerNavItems } from './../../constants/navigation';
+import { headerNavItems } from './../constants/navigation';
 
 function Header() {
   const location = useLocation();
