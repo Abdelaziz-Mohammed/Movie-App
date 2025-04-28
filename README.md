@@ -25,6 +25,7 @@ Users can explore trending movies, view movie details, similar, and recommended 
 - **Vite**
 
 ## Project Structure
+```
 movieapp/
 ├── node_modules/
 ├── public/
@@ -47,6 +48,7 @@ movieapp/
 ├── tailwind.config.js
 ├── vite.config.js
 └── README.md
+```
 
 ## 👨‍💻 Author
 **Eng. Abdelaziz Mohamed**
