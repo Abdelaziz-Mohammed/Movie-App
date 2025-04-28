@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6';
+import { useNavigate } from 'react-router-dom';
 
 function Banner() {
   const bannerData = useSelector(state => state.movie.bannerData);
   const imageURL = useSelector(state => state.movie.imageURL);
   const [currentImage, setCurrentImage] = useState(0);
+  const navigate = useNavigate();
   const handlePrev = () => {
     setCurrentImage(curr => curr > 0 ? curr - 1 : curr);
   }
@@ -66,7 +68,7 @@ function Banner() {
                       View : {Number(data.popularity).toFixed(0)}
                     </p>
                   </div>
-                  <button className='text-black bg-white px-4 py-2 font-bold rounded m-4 shadow-lg
+                  <button onClick={() => navigate(`/${data.media_type}/${data.id}`)} className='text-black bg-white px-4 py-2 font-bold rounded m-4 shadow-lg
                     hover:bg-gradient-to-l from-red-500 to-orange-500 transition-all duration-300'>
                     Play Now
                   </button>

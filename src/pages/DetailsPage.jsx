@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import { useSelector } from "react-redux";
 import moment from "moment";
 import HorizontalSlider from './../components/HorizontalSlider';
+import VideoPlay from './../components/VideoPlay';
 
 function DetailsPage() {
   const params = useParams();
@@ -13,6 +15,7 @@ function DetailsPage() {
   const similarData = similar?.results || [];
   const {data: recommended} = useFetch(`/${params?.explore}/${params?.id}/recommendations`);
   const recommendedData = recommended?.results || [];
+  const [playVideo, setPlayVideo] = useState(false);
 
   return (
     <section className="">
@@ -27,12 +30,16 @@ function DetailsPage() {
         </div>
       </div>
       {/* poster image + desc */}
-      <div className="container mx-auto px-4 pt-52
-        flex flex-col md:flex-row justify-start gap-6 md:gap-10
-        ">
-        <div className="-mt-28 relative w-fit mx-auto md:mx-0">
+      <div className="container mx-auto px-4 pt-44 md:pt-0
+        flex flex-col md:flex-row gap-6 md:gap-10">
+        <div className="-mt-20 relative w-fit mx-auto md:mx-0">
           <img src={imageURL+data?.poster_path} alt={data?.title} loading="eager"
             className='w-60 min-w-60 h-80 object-cover rounded-lg' />
+          <button onClick={() => setPlayVideo(true)}
+            className='text-black bg-white h-10 w-full font-bold rounded mt-3 shadow-lg
+            hover:bg-gradient-to-l from-red-500 to-orange-500 transition-all duration-300'>
+            Play Now
+          </button>
         </div>
         <div>
           <h2 className='text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:5xl font-bold text-white'>
@@ -136,6 +143,11 @@ function DetailsPage() {
             No Recommended {params?.explore === 'tv' ? 'TV Shows' : 'Movies'} Found!
           </h2>
         </div>
+      }
+      {
+        playVideo
+        &&
+        <VideoPlay close={() => setPlayVideo(false)} />
       }
     </section>
   )

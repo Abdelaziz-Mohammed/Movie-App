@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
-import Header from './components/Header';
 import Footer from './components/Footer';
+import Header from './components/Header';
+import ScrollToTop from "./components/ScrollToTop";
 import MobileNavigation from "./components/MobileNavigation";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -26,6 +27,7 @@ function App() {
       </div>
       <Footer />
       <MobileNavigation />
+      <ScrollToTop />
     </main>
   )
 }
