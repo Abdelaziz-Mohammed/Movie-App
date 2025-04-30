@@ -20,6 +20,7 @@ Users can explore trending movies, view movie details, similar, and recommended 
 - **Tailwind CSS**
 - **Redux Toolkit**
 - **React Router DOM**
+- **The Movie Database (TMDb) API**
 - **Axios**
 - **Moment.js**
 - **Vite**
